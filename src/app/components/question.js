@@ -11,10 +11,16 @@ class Question {
 }
 
 export class CategoricalQuestion extends Question {
-  constructor(id, text, options, scoreMap) {
+  /**
+   * 
+   * @param {Number} id 
+   * @param {String} text 
+   * @param {Map<String, Number>} options 
+   */
+  constructor(id, text, options) {
     super(id, text, "categorical");
     this.options = options;
-    this.scoreMap = scoreMap;
+    this.scoreMap = options;
   }
 
   score(answer) {
@@ -23,6 +29,12 @@ export class CategoricalQuestion extends Question {
 }
 
 export class NumericQuestion extends Question {
+  /**
+   * 
+   * @param {Number} id 
+   * @param {String} text 
+   * @param {Function} scoreFn 
+   */
   constructor(id, text, scoreFn) {
     super(id, text, "number");
     this.scoreFn = scoreFn;
